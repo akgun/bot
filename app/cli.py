@@ -1,6 +1,7 @@
 import click
 
 from . import bot
+from . import util
 
 
 @click.group()
@@ -23,4 +24,6 @@ def cmdstart():
 @click.argument('text', nargs=-1)
 def cmdsend(chat_id, text):
     """Send message"""
+    if not text:
+        text = util.read_stream()
     bot.send(chat_id, '\n'.join(text))
