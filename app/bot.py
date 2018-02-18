@@ -5,6 +5,8 @@ from . import config
 
 
 def send(chat_id, text):
+    if not chat_id or not text: return
+
     bot = telegram.Bot(token=config.BOT_TOKEN)
     bot.send_message(chat_id=chat_id, text=text)
 
